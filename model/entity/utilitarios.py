@@ -18,5 +18,5 @@ class Utilitarios():
     
     def criaNome(self):
         t = datetime.now()
-        nome = "/ORIGEM-" + t.strftime('%y-%m-%d-%H%M%S%f')
+        nome = "/VIDEO-" + t.strftime('%d-%m-%y-%H%M%S%f')
         return nome
