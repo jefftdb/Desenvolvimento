@@ -1,8 +1,12 @@
 from model.entity.edicao import Edicao 
 from model.entity.video_nugget import Video_nugget
 from app import app
-from flask import render_template,request
+from flask import render_template,request,redirect
 
+
+@app.route('/')
+def index():
+    return redirect('/cortar')
 
 @app.route('/cortar', methods = ['GET' , 'POST'])
 def cortar():
@@ -26,19 +30,3 @@ def cortar():
         return render_template('lista_de_cortes.html',lista = lista)
     return render_template('index.html')
 
-@app.route('/identificapalavras')
-def identificapalavras():
-    lista_de_links = ['https://www.youtube.com/watch?v=LFASRxvhg1k','https://www.youtube.com/watch?v=v8ec5V8cBI0']
-    lista_de_videos = []
-
-    for link in lista_de_links:
-        lista_de_videos.append(Edicao(link))
-
-    for video in lista_de_videos:
-        video.identificaTodasPalavas()
-        print(video.lista_de_palavras_deste_video)
-        print('-------------------------acabou---------------------------------')  
-
-              
-
-    return 'teste'
